@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahnsinn und Täuschung</title>
+    <link rel="stylesheet" href="menu.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Wahnsinn und Täuschung</h1>
+    </header>
+
+    <main class="register-container">
+
+        <!-- Hauptnavigation -->
+
+        <nav class="register-leiste" aria-label="Hauptmenü">
+
+            <button type="button" class="register-tab aktiv" data-bereich="start" aria-pressed="true">
+                Start
+            </button>
+
+            <button type="button" class="register-tab" data-bereich="mehrdeutig" aria-pressed="false">
+                Mehrdeutige Bilder
+            </button>
+
+            <button type="button" class="register-tab" data-bereich="hypnose" aria-pressed="false">
+                Hypnotische Bilder
+            </button>
+
+            <button type="button" class="register-tab" data-bereich="wahnsinn" aria-pressed="false">
+                Wahnsinn
+            </button>
+
+        </nav>
+
+
+        <!-- Großer Inhaltsrahmen -->
+
+        <div class="register-inhalt">
+
+            <!-- Startseite -->
+
+            <section id="startseite" class="seite">
+            </section>
+
+
+            <!-- Mehrdeutige und hypnotische Bilder -->
+
+            <section id="bildseite" class="seite" hidden>
+
+                <div class="bildflaeche">
+
+                    <button type="button" id="anzeigen" class="aktion-button">
+                        Anzeigen
+                    </button>
+
+                    <img id="taeuschungsbild" alt="Optische Täuschung" hidden>
+
+                    <p id="bildfehler" hidden></p>
+
+                </div>
+
+                <p id="aufgabe" class="aufgabe"></p>
+
+                <div class="bild-navigation">
+
+                    <button type="button" id="zurueck" class="aktion-button">
+                        Zurück
+                    </button>
+
+                    <button type="button" id="aufloesung" class="aktion-button" hidden>
+                        Auflösung anzeigen
+                    </button>
+
+                    <button type="button" id="weiter" class="aktion-button">
+                        Weiter
+                    </button>
+
+                </div>
+
+                <p id="bildnummer"></p>
+
+            </section>
+
+
+            <!-- Warnseite für den Bereich Wahnsinn -->
+
+            <section id="warnseite" class="seite" hidden>
+
+                <h2>Warnhinweis</h2>
+
+                <p>
+                    Die folgenden Darstellungen enthalten
+                    intensive optische und akustische Effekte.
+                    Diese können auf manche Menschen
+                    unangenehm oder verstörend wirken.
+                </p>
+
+                <p>
+                    Sie können das Experiment jederzeit
+                    über den roten STOP-Button oder
+                    die Leertaste verlassen.
+                </p>
+
+                <div class="warn-navigation">
+
+                    <button type="button" id="warnung-stop" class="stop-button">
+                        STOP - Zurück zum Start
+                    </button>
+
+                    <button type="button" id="warnung-weiter" class="aktion-button">
+                        Weiter
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Experimente im Bereich Wahnsinn -->
+
+            <section id="wahnsinn-experiment" class="seite" hidden>
+
+                <!-- Unterregister -->
+
+                <nav class="experiment-register" aria-label="Wahnsinn-Experimente">
+
+                    <button type="button" class="experiment-tab aktiv" data-experiment="alkohol" aria-pressed="true">
+                        Alkohol
+                    </button>
+
+                    <button type="button" class="experiment-tab" data-experiment="lsd" aria-pressed="false">
+                        LSD
+                    </button>
+
+                    <button type="button" class="experiment-tab" data-experiment="pilze" aria-pressed="false">
+                        Pilze
+                    </button>
+
+                </nav>
+
+
+                <!-- Inhalte der drei Experimente -->
+
+                <div class="experiment-inhalt">
+
+                    <!-- Alkohol -->
+
+                    <section id="alkohol-bereich" class="experiment-seite">
+
+                        <h2>Alkohol - 2,0 Promille</h2>
+
+                        <p>
+                            Künstlerische Simulation einer
+                            stark beeinträchtigten Wahrnehmung.
+                        </p>
+
+                    </section>
+
+
+                    <!-- LSD -->
+
+                    <section id="lsd-bereich" class="experiment-seite" hidden>
+
+                        <h2>LSD</h2>
+
+                        <p>
+                            Künstlerische Simulation veränderter
+                            visueller und akustischer Wahrnehmung.
+                        </p>
+
+                    </section>
+
+
+                    <!-- Pilze -->
+
+                    <section id="pilze-bereich" class="experiment-seite" hidden>
+
+                        <h2>Psilocybinhaltige Pilze</h2>
+
+                        <p>
+                            Künstlerische Simulation einer
+                            surrealen Wahrnehmung.
+                        </p>
+
+                    </section>
+
+                    <div class="medien-test">
+
+                        <p>
+                            Für dieses Experiment werden eine Webcam,
+                            ein Mikrofon und möglichst Kopfhörer benötigt.
+                            Kamera und Mikrofon werden erst nach Ihrer
+                            Freigabe eingeschaltet.
+                        </p>
+
+                        <button type="button" id="medien-start" class="aktion-button">
+                            Kamera und Mikrofon starten
+                        </button>
+
+                        <p id="medien-status" role="status">
+                            Kamera und Mikrofon sind ausgeschaltet.
+                        </p>
+
+                        <div id="kamera-rahmen" hidden>
+                            <video id="kamera-bild" autoplay muted playsinline hidden></video>
+                            <video id="kamera-geist" autoplay muted playsinline></video>
+                        </div>
+                        <label for="mikrofon-pegel">Mikrofon-Pegel</label>
+
+                        <progress id="mikrofon-pegel" value="0" max="100">
+                        </progress>
+
+                    </div>
+                </div>
+
+
+
+
+                <!-- Notausstieg für alle Experimente -->
+
+                <button type="button" id="experiment-stop" class="stop-button">
+                    STOP - Zurück zum Start
+                </button>
+
+            </section>
+
+        </div>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+
+/* =========================================
+   Täuschung und Wahnsinn
+   Hauptdesign
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+
+
+/* Allgemeines Seitenlayout */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #E8EBE5;
+}
+
+
+/* =========================================
+   Hauptüberschrift
+   ========================================= */
+
+h1 {
+    font-family: 'Rubik Glitch', sans-serif;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 400;
+
+    color: #8DEB85;
+    text-align: center;
+    letter-spacing: 3px;
+
+    text-shadow:
+        2px 0 2px #8B32B5,
+        -2px 0 2px #245338,
+        0 0 12px rgba(141, 235, 133, 0.4);
+
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+
+/* =========================================
+   Frankenstein-Tür
+   Äußerer Container
+   ========================================= */
+
+.tuer-container {
+    position: relative;
+
+    width: min(520px, 92vw, 60dvh);
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+
+    margin: 30px auto;
+
+    perspective: 1000px;
+}
+
+
+/* =========================================
+   Beide Türhälften
+   ========================================= */
+
+.tuer-links,
+.tuer-rechts {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+    pointer-events: none;
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    transition: transform 1.5s
+        cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+
+/* Beide PNG-Bilder gleich groß darstellen */
+
+.tuer-links img,
+.tuer-rechts img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   Scharniere
+   ========================================= */
+
+/* Linker Türflügel */
+
+.tuer-links {
+    transform-origin: left center;
+}
+
+/* Rechter Türflügel */
+
+.tuer-rechts {
+    transform-origin: right center;
+}
+
+
+/* =========================================
+   Türanimation
+   ========================================= */
+
+/* Linke Hälfte nach links öffnen */
+
+.tuer-container:hover .tuer-links,
+.tuer-container:focus-within .tuer-links {
+    transform: rotateY(-85deg);
+}
+
+
+/* Rechte Hälfte nach rechts öffnen */
+
+.tuer-container:hover .tuer-rechts,
+.tuer-container:focus-within .tuer-rechts {
+    transform: rotateY(85deg);
+}
+
+
+/* =========================================
+   ENTER-Bereich hinter dem Gesicht
+   ========================================= */
+
+.eingang {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #101010;
+    border-radius: 10px;
+
+    z-index: 1;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.7s ease;
+}
+
+
+/* ENTER-Bereich sichtbar machen */
+
+.tuer-container:hover .eingang,
+.tuer-container:focus-within .eingang {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   ENTER-Button
+   ========================================= */
+
+.enter-button {
+    display: inline-block;
+
+    padding: 15px 35px;
+
+    background-color: #267a36;
+    color: #ffffff;
+
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: background-color 0.3s ease;
+}
+
+
+/* Button beim Darüberfahren */
+
+.enter-button:hover {
+    background-color: #39b54a;
+}
+
+
+/* Tastaturbedienung */
+
+.enter-button:focus-visible {
+    outline: 3px solid #8DEB85;
+    outline-offset: 4px;
+}
+
+
+/* =========================================
+   Kleinere Bildschirme
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+        letter-spacing: 1px;
+        margin: 20px auto;
+    }
+
+    .tuer-container {
+        margin: 20px auto;
+    }
+
+    .enter-button {
+        padding: 12px 24px;
+        font-size: 18px;
+    }
+}
+
+
+/* =========================================
+   Reduzierte Bewegung
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .tuer-links,
+    .tuer-rechts,
+    .eingang {
+        transition-duration: 0.01ms;
+    }
+}
+

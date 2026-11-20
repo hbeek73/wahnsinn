@@ -1,0 +1,571 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #E8EBE5;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-family: 'Rubik Glitch', sans-serif;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 400;
+    color: #8DEB85;
+    text-align: center;
+    letter-spacing: 3px;
+
+    text-shadow:
+        2px 0 2px #8B32B5,
+        -2px 0 2px #245338,
+        0 0 12px rgba(141, 235, 133, 0.4);
+
+    margin: 5px auto 10px;
+    padding: 0 15px;
+}
+
+.register-container {
+    width: min(1450px, 92vw);
+    margin: 0 auto 40px;
+}
+
+.register-leiste {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.register-tab {
+    flex: 0 0 auto;
+    padding: 12px 20px;
+
+    background-color: #172017;
+    color: #B6C4B5;
+
+    border: 2px solid #355B43;
+    border-radius: 12px 12px 0 0;
+
+    font-family: 'Rubik Glitch', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.register-tab:hover {
+    background-color: #1D3021;
+    color: #8DEB85;
+}
+
+.register-tab.aktiv {
+    position: relative;
+    z-index: 3;
+
+    background-color: #101510;
+    color: #8DEB85;
+
+    border-bottom-color: #101510;
+    margin-bottom: -2px;
+    padding-bottom: 14px;
+}
+
+.register-inhalt {
+    position: relative;
+    z-index: 1;
+
+    min-height: clamp(480px, 68dvh, 760px);
+    padding: 25px;
+
+    background-color: #101510;
+    border: 2px solid #355B43;
+    border-radius: 0 12px 12px 12px;
+
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.bildflaeche {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: clamp(280px, 50dvh, 650px);
+
+    box-sizing: border-box;
+    background-color: #080A08;
+    border: 1px solid #245338;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#taeuschungsbild {
+    display: block;
+
+    width: 100%;
+    height: auto;
+    max-height: 78dvh;
+
+    object-fit: contain;
+}
+
+#bildfehler {
+    color: #E8A0A0;
+    text-align: center;
+    padding: 15px;
+}
+
+.aufgabe {
+    max-width: 800px;
+    margin: 25px auto;
+
+    color: #E8EBE5;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.aktion-button {
+    display: inline-block;
+    padding: 12px 25px;
+
+    background-color: #267A36;
+    color: #FFFFFF;
+
+    border: 1px solid #355B43;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.aktion-button:hover {
+    background-color: #39B54A;
+}
+
+.aktion-button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.aktion-button:disabled:hover {
+    background-color: #267A36;
+}
+
+.aktion-button:focus-visible,
+.register-tab:focus-visible,
+.experiment-tab:focus-visible {
+    outline: 3px solid #8DEB85;
+    outline-offset: 3px;
+}
+
+#anzeigen {
+    margin: 25px;
+    padding: 15px 35px;
+    font-size: 20px;
+}
+
+.bild-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+#bildnummer {
+    margin-top: 15px;
+    color: #8DEB85;
+    text-align: center;
+
+    font-family: 'Rubik Glitch', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+#warnseite {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#warnseite h2 {
+    color: #FF5555;
+    font-size: clamp(24px, 3vw, 36px);
+    margin-bottom: 30px;
+}
+
+#warnseite p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.warn-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    margin-top: 40px;
+}
+
+.stop-button {
+    display: inline-block;
+    padding: 18px 35px;
+
+    background-color: #B91C1C;
+    color: #FFFFFF;
+
+    border: 2px solid #FF5555;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stop-button:hover {
+    background-color: #E03131;
+}
+
+.stop-button:focus-visible {
+    outline: 3px solid #FFFFFF;
+    outline-offset: 4px;
+}
+
+.experiment-register {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0 12px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.experiment-tab {
+    flex: 0 0 auto;
+    padding: 12px 25px;
+
+    background-color: #172017;
+    color: #B6C4B5;
+
+    border: 2px solid #355B43;
+    border-radius: 12px 12px 0 0;
+
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.experiment-tab:hover {
+    background-color: #1D3021;
+    color: #8DEB85;
+}
+
+.experiment-tab.aktiv {
+    position: relative;
+    z-index: 3;
+
+    background-color: #080D08;
+    color: #8DEB85;
+
+    border-bottom-color: #080D08;
+    margin-bottom: -2px;
+    padding-bottom: 14px;
+}
+
+.experiment-inhalt {
+    position: relative;
+    z-index: 1;
+
+    min-height: 350px;
+    padding: 30px;
+
+    background-color: #080D08;
+    border: 2px solid #355B43;
+    border-radius: 0 12px 12px 12px;
+
+    box-sizing: border-box;
+}
+
+.experiment-seite {
+    width: 100%;
+    text-align: center;
+}
+
+.experiment-seite h2 {
+    color: #8DEB85;
+    font-size: clamp(22px, 3vw, 32px);
+    margin-bottom: 25px;
+}
+
+.experiment-seite p {
+    color: #E8EBE5;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+#experiment-stop {
+    display: block;
+    margin: 30px auto 0;
+}
+
+@media (max-width: 800px) {
+    .register-leiste {
+        overflow-x: auto;
+        padding-bottom: 2px;
+        margin-bottom: -2px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        letter-spacing: 1px;
+        margin: 20px auto 30px;
+    }
+
+    .register-container {
+        width: 96vw;
+    }
+
+    .register-tab {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .register-tab.aktiv {
+        padding-bottom: 12px;
+    }
+
+    .register-inhalt {
+        min-height: clamp(350px, 68dvh, 600px);
+        padding: 12px;
+    }
+
+    .bildflaeche {
+        min-height: clamp(220px, 55dvh, 500px);
+    }
+
+    .aufgabe {
+        font-size: 16px;
+    }
+
+    .aktion-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    #anzeigen {
+        font-size: 18px;
+    }
+
+    .bild-navigation {
+        justify-content: center;
+    }
+
+    #warnseite {
+        padding: 20px 5px;
+    }
+
+    #warnseite p {
+        font-size: 16px;
+    }
+
+    .stop-button {
+        font-size: 16px;
+        padding: 15px 20px;
+    }
+
+    .experiment-tab {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .experiment-tab.aktiv {
+        padding-bottom: 12px;
+    }
+
+    .experiment-inhalt {
+        padding: 15px;
+        min-height: 250px;
+    }
+
+    .experiment-seite p {
+        font-size: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aktion-button,
+    .stop-button {
+        transition: none;
+    }
+}
+
+.medien-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.medien-test p {
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+#kamera-bild {
+    width: 100%;
+    max-height: 60dvh;
+    object-fit: contain;
+    background-color: black;
+    border: 2px solid #355B43;
+    border-radius: 10px;
+}
+
+#mikrofon-pegel {
+    width: min(500px, 90%);
+    height: 18px;
+    accent-color: #8DEB85;
+}
+
+#medien-status {
+    color: #8DEB85;
+}
+
+#experiment-stop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 100;
+}
+
+#kamera-bild[data-effekt="alkohol"] {
+    filter: blur(3px) contrast(0.85) saturate(0.65);
+    animation: alkohol-schwanken 4s ease-in-out infinite alternate;
+}
+
+@keyframes alkohol-schwanken {
+    from {
+        transform: scale(1.04) translateX(-8px) rotate(-0.5deg);
+    }
+
+    to {
+        transform: scale(1.04) translateX(8px) rotate(0.5deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #kamera-bild[data-effekt="alkohol"] {
+        animation: none;
+    }
+}
+
+#kamera-rahmen {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid #355B43;
+    border-radius: 10px;
+}
+
+#kamera-rahmen #kamera-bild {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+}
+
+#kamera-geist {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translate(14px, 3px);
+    opacity: 0.35;
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+#kamera-bild[data-effekt="lsd"] {
+    animation: lsd-bild 9s ease-in-out infinite alternate;
+}
+
+#kamera-bild[data-effekt="lsd"] + #kamera-geist {
+    opacity: 0.45;
+    mix-blend-mode: screen;
+    filter: hue-rotate(130deg) saturate(2);
+    transform: translate(18px, -8px);
+}
+
+@keyframes lsd-bild {
+    from {
+        filter: hue-rotate(0deg) saturate(1.6) contrast(1.15);
+        transform: scale(1.03) skew(-1deg, 1deg);
+    }
+
+    to {
+        filter: hue-rotate(110deg) saturate(2.1) contrast(1.3);
+        transform: scale(1.07) skew(1deg, -1deg);
+    }
+}
+
+#kamera-bild[data-effekt="pilze"] {
+    animation: pilze-bild 12s ease-in-out infinite alternate;
+}
+
+#kamera-bild[data-effekt="pilze"] + #kamera-geist {
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    filter: grayscale(1) contrast(2) blur(5px);
+    transform: translate(-18px, 8px) scale(1.05);
+}
+
+@keyframes pilze-bild {
+    from {
+        filter: sepia(0.4) brightness(0.85) contrast(1.3);
+        transform: scale(1.02) rotate(-0.5deg);
+    }
+
+    to {
+        filter: sepia(0.8) hue-rotate(65deg)
+                brightness(0.7) contrast(1.5);
+        transform: scale(1.07) rotate(0.5deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #kamera-bild[data-effekt="lsd"],
+    #kamera-bild[data-effekt="pilze"] {
+        animation: none;
+    }
+}
